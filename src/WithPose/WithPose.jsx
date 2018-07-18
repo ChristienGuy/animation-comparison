@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import { Alert } from "./Alert";
 import { Draggable } from "./Draggable";
+import { Box } from "./Box";
 
 class WithPose extends Component {
   state = {
@@ -57,7 +58,7 @@ class WithPose extends Component {
     } = this.state;
 
     return (
-      <div>
+      <Fragment>
         <Alert
           color={alertColor}
           backgroundColor={alertBackgroundColor}
@@ -74,7 +75,8 @@ class WithPose extends Component {
         </button>
 
         <Draggable onAccept={this.onAccept} onDelete={this.onDelete} />
-      </div>
+        <Box />
+      </Fragment>
     );
   }
 }

@@ -11,8 +11,8 @@ const Wrapper = posed(styled.div`
   display: flex;
   justify-content: space-between;
 
-  width: 120px;
-  height: 40px;
+  width: 240px;
+  height: 60px;
 
   overflow: hidden;
 `)({
@@ -35,8 +35,8 @@ const DraggableDiv = posed(styled.div`
 `)({
   draggable: "x",
   dragBounds: {
-    left: -80,
-    right: 80
+    left: -200,
+    right: 200
   },
   dragEnd: {
     transition: {
@@ -76,9 +76,9 @@ class Draggable extends Component {
   };
 
   onDragEnd = () => {
-    if (this.x > 50) {
+    if (this.x > 150) {
       this.props.onDelete();
-    } else if (this.x < -60) {
+    } else if (this.x < -150) {
       this.props.onAccept();
     }
   };
