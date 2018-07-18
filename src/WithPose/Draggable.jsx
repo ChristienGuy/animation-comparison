@@ -94,7 +94,9 @@ class Draggable extends Component {
           onValueChange={{ x: x => (this.x = x) }}
           onDragEnd={this.onDragEnd}
           values={values}
-        />
+        >
+          Drag Me
+        </DraggableDiv>
       </Wrapper>
     );
   }
