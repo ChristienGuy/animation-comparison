@@ -26,12 +26,21 @@ const Nav = styled.nav`
 const PosedNav = posed(Nav)({
   closed: {
     x: "-100%",
-    staggerChildren: 50
+    staggerChildren: 50,
+    duration: 100,
+    transition: {
+      duration: 150
+    }
   },
   open: {
     x: "0%",
-    delayChildren: 150,
-    staggerChildren: 50
+    delayChildren: 50,
+    staggerChildren: 50,
+    transition: {
+      ease: "easeOut",
+      stiffness: 120,
+      duration: 150
+    }
   },
   initialPose: "closed"
 });
