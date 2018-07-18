@@ -8,18 +8,24 @@ const StyledBox = styled.div`
   width: auto;
   height: 100px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 `;
 
 const PosedBox = posed(StyledBox)({
   closed: {
     width: 0,
     height: 0,
-    delay: 100
+    delay: 50
   },
   open: {
     width: "100%",
     height: "100px",
-    delayChildren: 100
+    delayChildren: 100,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 21
+    }
   },
   initialPose: "closed"
 });
@@ -37,7 +43,12 @@ const PosedContent = posed(Content)({
   },
   open: {
     opacity: 1,
-    y: 0
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 19
+    }
   },
   initialPose: "closed"
 });
