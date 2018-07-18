@@ -61,6 +61,7 @@ class WithPose extends Component {
 
     return (
       <Fragment>
+        <h1>POSE</h1>
         <Alert
           color={alertColor}
           backgroundColor={alertBackgroundColor}

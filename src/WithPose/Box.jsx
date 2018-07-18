@@ -5,7 +5,7 @@ import posed from "react-pose";
 import { Button } from "../components";
 
 const StyledBox = styled.div`
-  width: 300px;
+  width: auto;
   height: 100px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 `;
@@ -17,7 +17,7 @@ const PosedBox = posed(StyledBox)({
     delay: 100
   },
   open: {
-    width: "300px",
+    width: "100%",
     height: "100px",
     delayChildren: 100
   },
@@ -30,7 +30,10 @@ const Content = styled.div`
 const PosedContent = posed(Content)({
   closed: {
     opacity: 0,
-    y: 20
+    y: 10,
+    transition: {
+      duration: 100
+    }
   },
   open: {
     opacity: 1,

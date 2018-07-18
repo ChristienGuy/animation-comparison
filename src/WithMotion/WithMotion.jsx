@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Motion, spring } from "react-motion";
 
 import { Alert } from "./Alert";
+import { Box } from "./Box";
 import { Button } from "../components";
 
 class WithMotion extends Component {
@@ -27,10 +28,11 @@ class WithMotion extends Component {
     const { alertOpen } = this.state;
     return (
       <Fragment>
+        <h1>MOTION</h1>
         <Motion
           defaultStyle={{ y: -100 }}
           style={{
-            y: spring(alertOpen ? 0 : -100, { stiffness: 120, damping: 1 })
+            y: spring(alertOpen ? 0 : -100, { stiffness: 250, damping: 20 })
           }}
         >
           {value => {
@@ -49,6 +51,11 @@ class WithMotion extends Component {
         </Motion>
 
         <Button onClick={this.showAlert}>ALERT</Button>
+        <p>
+          react-motion does not handle dragging, would need to handle it
+          ourselves or find another library
+        </p>
+        <Box />
       </Fragment>
     );
   }

@@ -10,8 +10,8 @@ const Wrapper = posed(styled.div`
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  width: 240px;
   height: 60px;
 
   overflow: hidden;
@@ -65,7 +65,7 @@ const Accept = posed(styled.div`
   width: 40px;
 `)({
   passive: {
-    translateX: ["x", pipe(interpolate([-80, 80], [-20, 8])), true]
+    translateX: ["x", pipe(interpolate([-80, 80], [-8, 8])), true]
   }
 });
 

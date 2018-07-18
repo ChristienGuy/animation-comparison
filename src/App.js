@@ -6,8 +6,7 @@ import WithSpring from "./WithSpring";
 import posed from "../node_modules/react-pose";
 
 const AppWrapper = styled.div`
-  display: grid;
-  grid-template-rows: 80px 1fr 100px;
+  padding: 10vw;
 `;
 const Nav = styled.nav`
   position: absolute;
@@ -73,7 +72,6 @@ const PosedNavButton = posed(NavButton)({
 });
 
 const Wrapper = styled.div`
-  padding: 120px;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 `;
