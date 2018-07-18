@@ -77,27 +77,9 @@ class Draggable extends Component {
 
   onDragEnd = () => {
     if (this.x > 50) {
-      this.setState(
-        state => ({
-          count: state.count + 1
-        }),
-        () => {
-          console.log("====================================");
-          console.log("DELETE", this.state.count);
-          console.log("====================================");
-        }
-      );
+      this.props.onDelete();
     } else if (this.x < -60) {
-      this.setState(
-        state => ({
-          count: state.count + 1
-        }),
-        () => {
-          console.log("====================================");
-          console.log("ACCEPT", this.state.count);
-          console.log("====================================");
-        }
-      );
+      this.props.onAccept();
     }
   };
 

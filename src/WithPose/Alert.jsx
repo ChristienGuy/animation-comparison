@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import posed from 'react-pose';
+import styled from "styled-components";
+import posed from "react-pose";
 
 const Alert = posed(styled.div`
   position: absolute;
@@ -13,8 +13,8 @@ const Alert = posed(styled.div`
 
   padding: 32px;
 
-  background-color: #da1919;
-  color: #fff;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
 `)({
   open: {
     translateY: 0,
@@ -31,6 +31,8 @@ const Alert = posed(styled.div`
   }
 });
 
-export {
-  Alert
-}
+Alert.defaultProps = {
+  backgroundColor: "#33c5ac",
+  color: "#fff"
+};
+export { Alert };
