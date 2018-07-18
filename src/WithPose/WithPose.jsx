@@ -4,6 +4,8 @@ import { Alert } from "./Alert";
 import { Draggable } from "./Draggable";
 import { Box } from "./Box";
 
+import { Button } from "../components";
+
 class WithPose extends Component {
   state = {
     alertStatus: "closed",
@@ -66,15 +68,20 @@ class WithPose extends Component {
         >
           {message}
         </Alert>
-        <button
+        <Button
+          style={{ marginBottom: 16 }}
           onClick={() =>
             this.toggleAlert("This is a nice alert, isn't it lovely")
           }
         >
-          Alert
-        </button>
+          Show alert
+        </Button>
 
-        <Draggable onAccept={this.onAccept} onDelete={this.onDelete} />
+        <Draggable
+          style={{ marginBottom: 16 }}
+          onAccept={this.onAccept}
+          onDelete={this.onDelete}
+        />
         <Box />
       </Fragment>
     );

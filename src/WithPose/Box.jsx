@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
-import posed from "../../node_modules/react-pose";
+import posed from "react-pose";
+
+import { Button } from "../components";
 
 const StyledBox = styled.div`
   width: 300px;
   height: 100px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  /* padding: 16px; */
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 `;
 
 const PosedBox = posed(StyledBox)({
@@ -23,7 +24,10 @@ const PosedBox = posed(StyledBox)({
   initialPose: "closed"
 });
 
-const Content = posed.div({
+const Content = styled.div`
+  padding: 16px;
+`;
+const PosedContent = posed(Content)({
   closed: {
     opacity: 0,
     y: 20
@@ -49,9 +53,11 @@ class Box extends Component {
     const { boxState } = this.state;
     return (
       <Fragment>
-        <button onClick={this.triggerFade}>fade</button>
+        <Button style={{ marginBottom: 16 }} onClick={this.triggerFade}>
+          Show content
+        </Button>
         <PosedBox pose={boxState}>
-          <Content>This is some content</Content>
+          <PosedContent>This is some content</PosedContent>
         </PosedBox>
       </Fragment>
     );

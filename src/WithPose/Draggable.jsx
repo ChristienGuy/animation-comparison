@@ -85,8 +85,9 @@ class Draggable extends Component {
 
   render() {
     const values = { x: this.x };
+    const { style } = this.props;
     return (
-      <Wrapper parentValues={values}>
+      <Wrapper style={style} parentValues={values}>
         <Delete parentValues={values}>delete</Delete>
         <Accept parentValues={values}>accept</Accept>
         <DraggableDiv

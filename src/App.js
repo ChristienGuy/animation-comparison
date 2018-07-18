@@ -91,7 +91,7 @@ const NavToggleButton = styled.button`
 
 class App extends Component {
   state = {
-    showing: "pose",
+    showing: "motion",
     navState: "closed"
   };
 
