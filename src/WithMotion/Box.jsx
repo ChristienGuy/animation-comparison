@@ -50,11 +50,8 @@ class Box extends Component {
                   opacity: 0
                 }}
                 style={{
-                  y: spring(boxOpen ? 0 : 10, { stiffness: 250, damping: 20 }),
-                  opacity: spring(boxOpen ? 1 : 0, {
-                    stiffness: 250,
-                    damping: 20
-                  })
+                  y: spring(boxOpen ? 0 : 10, { stiffness: 200, damping: 16 }),
+                  opacity: spring(boxOpen ? 1 : 0)
                 }}
               >
                 {({ opacity, y }) => (
