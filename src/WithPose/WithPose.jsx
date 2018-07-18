@@ -8,26 +8,30 @@ class WithPose extends Component {
     alertStatus: "closed",
     alertBackgroundColor: "#a643c6",
     alertColor: "#fff",
-    message: ""
+    message: "",
+    alertTimeout: () => {}
   };
 
   toggleAlert = (message, options = {}) => {
+    const { alertTimeout } = this.state;
     const {
       backgroundColor: alertBackgroundColor = "#17c7b6",
       color: alertColor = "#fff"
     } = options;
 
-    this.setState({
+    clearTimeout(alertTimeout);
+
+    this.setState(() => ({
       message,
       alertBackgroundColor,
       alertColor,
-      alertStatus: "open"
-    });
-    setTimeout(() => {
-      this.setState({
-        alertStatus: "closed"
-      });
-    }, 2000);
+      alertStatus: "open",
+      alertTimeout: setTimeout(() => {
+        this.setState({
+          alertStatus: "closed"
+        });
+      }, 2000)
+    }));
   };
 
   onAccept = () => {
