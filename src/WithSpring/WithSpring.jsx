@@ -3,6 +3,7 @@ import { Spring } from "react-spring";
 
 import { Alert } from "./Alert";
 import { Box } from "./Box";
+import { Draggable } from "./Draggable";
 import { Button } from "../components";
 
 class WithSpring extends Component {
@@ -46,6 +47,7 @@ class WithSpring extends Component {
         </Spring>
         <Button onClick={this.showAlert}>Show alert</Button>
         <p>Draggable goes here</p>
+        <Draggable />
         <Box />
       </Fragment>
     );

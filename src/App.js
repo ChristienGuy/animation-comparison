@@ -85,6 +85,10 @@ const NavToggleButton = styled.button`
   position: absolute;
   left: 16px;
   top: 16px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 class App extends Component {
@@ -123,9 +127,11 @@ class App extends Component {
     const { navState } = this.state;
     return (
       <AppWrapper>
-        <NavToggleButton onClick={this.toggleNav} />
+        <NavToggleButton onClick={this.toggleNav}>menu</NavToggleButton>
         <PosedNav pose={navState}>
-          <NavToggleButton onClick={this.toggleNav} withParent={false} />
+          <NavToggleButton withParent={false} onClick={this.toggleNav}>
+            menu
+          </NavToggleButton>
           <PosedNavButton
             onClick={this.onNavigate}
             value="pose"
