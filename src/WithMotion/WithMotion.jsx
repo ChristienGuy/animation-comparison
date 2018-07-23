@@ -33,7 +33,7 @@ class WithMotion extends Component {
         <Motion
           defaultStyle={{ y: -100 }}
           style={{
-            y: spring(alertOpen ? 0 : -100, { stiffness: 250, damping: 20 })
+            y: spring(alertOpen ? 0 : -100, { stiffness: 300, damping: 40 })
           }}
         >
           {value => {
