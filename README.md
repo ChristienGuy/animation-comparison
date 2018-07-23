@@ -30,3 +30,5 @@
   - Does mean that the code for an animation is next to the other elements it effects
 - animating children works in the same way as motion.
 - using the 'native' prop is a bit more complicated but leads to some really good performance improvements
+- no native methods for "illusion of life" easings (e.g spring/overshooting target etc.)
+- one of the open issues is to write tests, so currently this lib does not have actual unit tests for it [https://github.com/drcmda/react-spring/issues/102](https://github.com/drcmda/react-spring/issues/102)
