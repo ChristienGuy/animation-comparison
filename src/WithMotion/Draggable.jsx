@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withGesture } from "react-with-gesture";
+import { Motion, spring } from "react-motion";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,14 +22,23 @@ const Container = styled.div`
   margin: 32px 0;
 `;
 
+const Slider = styled.div`
+  background-color: cornflowerblue;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+`;
+
 class Draggable extends Component {
   render() {
     const { xDelta, down, children } = this.props;
     return (
-      <Spring
-        native
-        to={{ x: down ? xDelta : 0 }}
-        immediate={name => down && name === "x"}
+      <Motion
+        style={{
+          x: spring(down ? xDelta : 0, { stiffness: 200, damping: 17 })
+        }}
       >
         {({ x }) => (
           <Container
@@ -36,21 +46,21 @@ class Draggable extends Component {
             style={{ backgroundColor: xDelta < 0 ? "#FF1C68" : "#14D790" }}
             onMouseUp={this.onMouseUp}
           >
-            <animated.div>
+            <div>
               {down && Math.abs(xDelta) > 50
                 ? xDelta < 0
                   ? "Cancel"
                   : "Accept"
                 : children}
-            </animated.div>
+            </div>
             <Slider
               style={{
-                transform: x.interpolate(x => `translate3d(${x}px,0,0)`)
+                transform: `translate3d(${down ? xDelta : x}px,0,0)`
               }}
             />
           </Container>
         )}
-      </Spring>
+      </Motion>
     );
   }
 }

@@ -16,6 +16,8 @@
 - Docs are a mess, I need to use 3rd hand info to get things working.
 - API is sort of mental but similar React Native's Animated.js.
 - No control over duration, control via stiffness and damping etc. instead, trickier to get exactly what we're after.
+  - Also makes it tricker to handle input related motion, need to manually decide when to use the interpolated value vs the inital touch value
+- No additional helpers for declaring custom transitions.
 - A lot of code to achieve relatively small things.
 - animating children is simple but requires a lot of code
 

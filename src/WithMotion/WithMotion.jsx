@@ -3,6 +3,7 @@ import { Motion, spring } from "react-motion";
 
 import { Alert } from "./Alert";
 import { Box } from "./Box";
+import { Draggable } from "./Draggable";
 import { Button } from "../components";
 
 class WithMotion extends Component {
@@ -51,10 +52,7 @@ class WithMotion extends Component {
         </Motion>
 
         <Button onClick={this.showAlert}>ALERT</Button>
-        <p>
-          react-motion does not handle dragging, would need to handle it
-          ourselves or find another library
-        </p>
+        <Draggable />
         <Box />
       </Fragment>
     );
