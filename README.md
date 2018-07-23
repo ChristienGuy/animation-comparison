@@ -27,3 +27,4 @@
   - Means code gets very large very quickly
   - Does mean that the code for an animation is next to the other elements it effects
 - animating children works in the same way as motion.
+- using the 'native' prop is a bit more complicated but leads to some really good performance improvements
