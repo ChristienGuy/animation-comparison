@@ -9,11 +9,11 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  width: 320px;
-  height: 90px;
+  width: auto;
+  height: 60px;
   pointer-events: auto;
   transform-origin: 50% 50% 0px;
-  border-radius: 4px;
+
   padding-left: 32px;
   padding-right: 32px;
   font-size: 20px;
@@ -23,7 +23,7 @@ const Container = styled.div`
 
   overflow: hidden;
 
-  margin-bottom: 32px;
+  margin: 32px 0;
 `;
 
 const Slider = styled(animated.div)`

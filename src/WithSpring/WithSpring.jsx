@@ -46,7 +46,6 @@ class WithSpring extends Component {
           )}
         </Spring>
         <Button onClick={this.showAlert}>Show alert</Button>
-        <p>Draggable goes here</p>
         <Draggable />
         <Box />
       </Fragment>

@@ -18,3 +18,7 @@
 - A lot of code to achieve relatively small things.
 
 ## Spring
+
+- Very similar API to motion (relies on renderprops)
+  - Means code gets very large very quickly
+  - Does mean that the code for an animation is
