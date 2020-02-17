@@ -1,56 +1,49 @@
-import React, { Component, Fragment } from "react";
-import { Spring } from "react-spring";
+import React, { useState } from "react";
+import { useSpring } from "react-spring";
 
 import { Alert } from "./Alert";
 import { Box } from "./Box";
-import { Draggable } from "./Draggable";
 import { Button } from "../components";
+import { Draggable } from "./Draggable";
 
-class WithSpring extends Component {
-  state = {
-    alertOpen: false
+const WithSpring = () => {
+  const [alertOpen, setAlertOpen] = useState(false);
+
+  const { transform } = useSpring({
+    transform: `translateY(${alertOpen ? 0 : -100}%)`,
+    config: {
+      mass: 1,
+      tension: 1000,
+      friction: 80
+    }
+  });
+
+  const showAlert = () => {
+    setAlertOpen(true);
+    setTimeout(() => {
+      setAlertOpen(false);
+    }, 2000);
   };
 
-  showAlert = () => {
-    this.setState(
-      () => ({
-        alertOpen: true
-      }),
-      () => {
-        setTimeout(() => {
-          this.setState({
-            alertOpen: false
-          });
-        }, 2000);
-      }
-    );
-  };
+  return (
+    <>
+      <h1>SPRING</h1>
 
-  render() {
-    const { alertOpen } = this.state;
+      <Alert
+        backgroundColor="#17c7b6"
+        color="#fff"
+        style={{
+          transform: transform.interpolate(t => t)
+        }}
+      >
+        Hello there
+      </Alert>
+      <Button onClick={showAlert}>Show alert</Button>
 
-    return (
-      <Fragment>
-        <h1>SPRING</h1>
-        <Spring from={{ y: -100 }} to={{ y: alertOpen ? 0 : -100 }}>
-          {styles => (
-            <Alert
-              backgroundColor="#17c7b6"
-              color="#fff"
-              style={{
-                transform: `translateY(${styles.y}%)`
-              }}
-            >
-              Hello there,
-            </Alert>
-          )}
-        </Spring>
-        <Button onClick={this.showAlert}>Show alert</Button>
-        <Draggable />
-        <Box />
-      </Fragment>
-    );
-  }
-}
+      <Draggable />
+      <Box />
+    </>
+  );
+};
 
 export default WithSpring;

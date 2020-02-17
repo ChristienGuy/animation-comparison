@@ -33,6 +33,7 @@ const PosedBox = posed(StyledBox)({
 const Content = styled.div`
   padding: 16px;
 `;
+
 const PosedContent = posed(Content)({
   closed: {
     opacity: 0,
