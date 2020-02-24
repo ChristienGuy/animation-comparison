@@ -12,7 +12,7 @@ const WithSpring = () => {
   const { transform } = useSpring({
     transform: `translateY(${alertOpen ? 0 : -100}%)`,
     config: {
-      mass: 1,
+      mass: 8,
       tension: 1000,
       friction: 80
     }

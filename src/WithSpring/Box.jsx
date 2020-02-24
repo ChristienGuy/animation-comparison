@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useSpring } from "react-spring";
+import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
+import useMeasure from "react-use-measure";
+
 import { Button } from "../components";
 
-const StyledBox = styled.div`
+const StyledBox = styled(animated.div)`
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 `;
@@ -14,11 +16,16 @@ const Content = styled.div`
 
 const Box = () => {
   const [boxOpen, setBoxOpen] = useState(false);
+  const [ref, bounds] = useMeasure();
 
   const { width, height } = useSpring({
-    width: 0,
-    height: 0,
-    from: {}
+    width: boxOpen ? 100 : 0,
+    height: boxOpen ? 100 : 0,
+    config: {
+      mass: 3,
+      tension: 600,
+      friction: 80
+    }
   });
 
   return (
@@ -30,9 +37,10 @@ const Box = () => {
         Open Box
       </Button>
       <StyledBox
+        ref={ref}
         style={{
-          width: `${width}%`,
-          height: `${height}px`
+          width: width.interpolate(width => `${width}%`),
+          height: height.interpolate(height => `${height}px`)
         }}
       >
         <Content>Hello there</Content>
