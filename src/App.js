@@ -1,13 +1,14 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import WithPose from "./WithPose";
 import WithMotion from "./WithMotion";
 import WithSpring from "./WithSpring";
-import posed from "../node_modules/react-pose";
+import posed from "react-pose";
 
 const AppWrapper = styled.div`
   padding: 10vw;
 `;
+
 const Nav = styled.nav`
   position: absolute;
   left: 0;
@@ -91,14 +92,12 @@ const NavToggleButton = styled.button`
   }
 `;
 
-class App extends Component {
-  state = {
-    showing: "motion",
-    navState: "closed"
-  };
+const App = () => {
+  const [currentView, setCurrentView] = useState("spring");
+  const [navState, setNavState] = useState("closed");
 
-  children = () => {
-    switch (this.state.showing) {
+  const renderView = () => {
+    switch (currentView) {
       case "pose":
         return <WithPose />;
       case "motion":
@@ -110,48 +109,29 @@ class App extends Component {
     }
   };
 
-  onNavigate = e => {
-    this.setState({
-      showing: e.target.value,
-      navState: "closed"
-    });
+  const onNavigate = e => {
+    setCurrentView(e.target.value);
+    setNavState("closed");
   };
 
-  toggleNav = () => {
-    this.setState(state => ({
-      navState: state.navState === "closed" ? "open" : "closed"
-    }));
+  const toggleNav = () => {
+    setNavState(navState => (navState === "closed" ? "open" : "closed"));
   };
 
-  render() {
-    const { navState } = this.state;
-    return (
-      <AppWrapper>
-        <NavToggleButton onClick={this.toggleNav}>menu</NavToggleButton>
-        <PosedNav pose={navState}>
-          <NavToggleButton withParent={false} onClick={this.toggleNav}>
-            menu
-          </NavToggleButton>
-          <PosedNavButton
-            onClick={this.onNavigate}
-            value="pose"
-            type="button"
-          />
-          <PosedNavButton
-            onClick={this.onNavigate}
-            value="motion"
-            type="button"
-          />
-          <PosedNavButton
-            onClick={this.onNavigate}
-            value="spring"
-            type="button"
-          />
-        </PosedNav>
-        <Wrapper>{this.children()}</Wrapper>
-      </AppWrapper>
-    );
-  }
-}
+  return (
+    <AppWrapper>
+      <NavToggleButton onClick={toggleNav}>menu</NavToggleButton>
+      <PosedNav pose={navState}>
+        <NavToggleButton withParent={false} onClick={toggleNav}>
+          menu
+        </NavToggleButton>
+        <PosedNavButton onClick={onNavigate} value="pose" type="button" />
+        <PosedNavButton onClick={onNavigate} value="motion" type="button" />
+        <PosedNavButton onClick={onNavigate} value="spring" type="button" />
+      </PosedNav>
+      <Wrapper>{renderView()}</Wrapper>
+    </AppWrapper>
+  );
+};
 
 export default App;
